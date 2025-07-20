@@ -33,7 +33,7 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
       imagePullSecrets: 
-        - {{ .Values.image.pullSecrets }}
+        - name: {{ .Values.image.pullSecrets }}
               
 ---
 #
