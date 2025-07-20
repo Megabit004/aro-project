@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aro-project
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/helm.force-values-file-write: "true"
+    # Enable image update for this application
+    argocd-image-updater.argoproj.io/enable: "true"
+    # Specify the image to track and update. Format: <alias>=<image-name>
+    # The alias 'my-nginx-app' is used consistently below.
+    # The image name 'mike004/nginx' should match your Docker Hub repository.
+    argocd-image-updater.argoproj.io/image-list: my-nginx-app=mike004/nginx
+    # Define the update strategy (e.g., semver, latest, digest)
+    # Using 'latest' as per your original intent, but 'semver' is often preferred for production.
+    argocd-image-updater.argoproj.io/my-nginx-app.update-strategy: newest-build
+    #argocd-image-updater.argoproj.io/my-nginx-app.helm.values-file: deployment/environments/prod-values.yaml
+    # Define the Git branch to push updates to
+    argocd-image-updater.argoproj.io/write-back-method: git # Changed to 'git' to commit changes to the repo
+    argocd-image-updater.argoproj.io/git-branch: main
+    # Specify the path to the Helm value where the image tag is located.
+    # This should point to the 'tag' field under 'image' in your values.yaml.
+    argocd-image-updater.argoproj.io/my-nginx-app.helm.image-tag: image.tag
+    # Optional: If you want to specify a semver constraint (e.g., ">=1.0.0 <2.0.0")
+    # argocd-image-updater.argoproj.io/my-nginx-app.allow-tags: ">=1.0.0 <2.0.0"
+    # Optional: If your registry requires authentication, reference a secret
+#    argocd-image-updater.argoproj.io/my-nginx-app.pull-secret: docker-registry:.dockerconfigjson
+    # Optional: If you want to add a commit message prefix
+    #argocd-image-updater.argoproj.io/commit-message: "Automated image update for {{.app.name}}: {{.images}}"
+
+spec:
+  project: prod
+  source:
+    repoURL: https://github.com/Megabit004/aro-project.git
+    targetRevision: main # Or a specific chart version like '1.2.3'
+    path: asd/chart/.
+    helm:
+      valueFiles:
+        # Ensure that 'environments/prod-values.yaml' contains the 'image.tag' field
+        # and that its content is correctly structured for Helm to merge.
+        - values/prod.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: aro-asd-prod-01
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
