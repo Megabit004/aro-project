@@ -27,13 +27,13 @@ spec:
       containers:
         - name: {{ .Values.ContainerName }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy:
-            - name: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-      imagePullSecrets: {{ .Values.image.pullSecrets }}
+      imagePullSecrets: 
+        - {{ .Values.image.pullSecrets }}
               
 ---
 #
