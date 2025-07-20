@@ -26,7 +26,7 @@ metadata:
     # Optional: If you want to specify a semver constraint (e.g., ">=1.0.0 <2.0.0")
     # argocd-image-updater.argoproj.io/my-nginx-app.allow-tags: ">=1.0.0 <2.0.0"
     # Optional: If your registry requires authentication, reference a secret
-#    argocd-image-updater.argoproj.io/my-nginx-app.pull-secret: docker-registry:.dockerconfigjson
+    argocd-image-updater.argoproj.io/my-nginx-app.pull-secret: my-secret:.dockerconfigjson
     # Optional: If you want to add a commit message prefix
     #argocd-image-updater.argoproj.io/commit-message: "Automated image update for {{.app.name}}: {{.images}}"
 
