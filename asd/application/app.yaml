@@ -28,7 +28,7 @@ metadata:
     # Optional: If your registry requires authentication, reference a secret
     argocd-image-updater.argoproj.io/my-nginx-app.pull-secret: pullsecret:argocd/argo-pull # add tn the cm configmap pullsecret from docker-1-registry.io
     # Optional: If you want to add a commit message prefix
-    #argocd-image-updater.argoproj.io/commit-message: "Automated image update for {{.app.name}}: {{.images}}"
+    argocd-image-updater.argoproj.io/commit-message: "Image Update commit for {{.app.name}}: {{.images}}"
 
 spec:
   project: prod
