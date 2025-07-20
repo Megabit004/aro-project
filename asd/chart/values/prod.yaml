@@ -10,7 +10,7 @@ replicaCount: 3 # Number of desired pods for the deployment
 ContainerName: my-web-app-container
 image:
   repository: mike004/nginx # Example: your-registry/your-image
-  tag: sha256:72516a7be6c2199dd9dd290c246d996b6f489c9920cb7cc054cac534b1856d4d    # Example: 1.25.3 or a specific version
+  tag: star    # Example: 1.25.3 or a specific version
   pullPolicy: IfNotPresent # Options: Always, Never, IfNotPresent
   pullSecrets: my-secret
 
