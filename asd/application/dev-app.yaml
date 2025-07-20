@@ -46,9 +46,4 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: aro-asd-test-01
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: false
-    syncOptions:
-      - CreateNamespace=true
+
