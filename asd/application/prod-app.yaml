@@ -8,6 +8,7 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/helm.force-values-file-write: "true"
     # Enable image update for this application
+    argocd-image-updater.argoproj.io/interval: 10m
     argocd-image-updater.argoproj.io/enable: "true"
     # Specify the image to track and update. Format: <alias>=<image-name>
     # The alias 'my-nginx-app' is used consistently below.
