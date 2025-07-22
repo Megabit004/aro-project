@@ -19,7 +19,7 @@ metadata:
     # '*' allows any tag to be considered when finding the latest digest.
 #    argocd-image-updater.argoproj.io/my-nginx-app.allow-tags: "*"
     argocd-image-updater.argoproj.io/my-nginx-app.update-strategy: newest-build
-    argocd-image-updater.argoproj.io/my-nginx-app.helm.values-file: values/prod-values.yaml
+    argocd-image-updater.argoproj.io/my-nginx-app.helm.values-file: values/dev-values.yaml
     # Define the Git branch to push updates to
     argocd-image-updater.argoproj.io/write-back-method: git # Changed to 'git' to commit changes to the repo
     argocd-image-updater.argoproj.io/git-branch: main
