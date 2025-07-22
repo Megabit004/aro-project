@@ -23,7 +23,9 @@ metadata:
     argocd-image-updater.argoproj.io/git-branch: main
     # Specify the path to the Helm value where the image tag is located.
     # This should point to the 'tag' field under 'image' in your values.yaml.
-    argocd-image-updater.argoproj.io/my-nginx-app.helm.image-tag: image.tag
+    argocd-image-updater.argoproj.io/nginx.helm.image-paths: image.repository, image.tag
+    #argocd-image-updater.argoproj.io/my-nginx-app.helm.image-tag: image.tag
+    
     # Optional: If you want to specify a semver constraint (e.g., ">=1.0.0 <2.0.0")
     # argocd-image-updater.argoproj.io/my-nginx-app.allow-tags: ">=1.0.0 <2.0.0"
     # Optional: If your registry requires authentication, reference a secret
