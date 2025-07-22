@@ -17,7 +17,7 @@ metadata:
     # Define the update strategy (e.g., semver, latest, digest)
     # Using 'latest' as per your original intent, but 'semver' is often preferred for production.
     argocd-image-updater.argoproj.io/my-nginx-app.update-strategy: newest-build
-    #argocd-image-updater.argoproj.io/my-nginx-app.helm.values-file: deployment/environments/prod-values.yaml
+    argocd-image-updater.argoproj.io/my-nginx-app.helm.values-file:  values/prod-values.yaml
     # Define the Git branch to push updates to
     argocd-image-updater.argoproj.io/write-back-method: git # Changed to 'git' to commit changes to the repo
     argocd-image-updater.argoproj.io/git-branch: main
