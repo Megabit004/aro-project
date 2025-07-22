@@ -6,9 +6,9 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd-image-updater.argoproj.io/helm.force-values-file-write: "true"
+    #argocd-image-updater.argoproj.io/helm.force-values-file-write: "true"
     # Enable image update for this application
-    argocd-image-updater.argoproj.io/interval: 10m
+    #argocd-image-updater.argoproj.io/interval: 10m
     argocd-image-updater.argoproj.io/enable: "true"
     # Specify the image to track and update. Format: <alias>=<image-name>
     # The alias 'my-nginx-app' is used consistently below.
@@ -31,7 +31,7 @@ metadata:
     # Optional: If your registry requires authentication, reference a secret
     argocd-image-updater.argoproj.io/my-nginx-app.pull-secret: pullsecret:argocd/argo-pull # add tn the cm configmap pullsecret from docker-1-registry.io
     # Optional: If you want to add a commit message prefix
-    argocd-image-updater.argoproj.io/commit-message: "Image Update commit for {{.app.name}}: {{.images}}"
+    #argocd-image-updater.argoproj.io/commit-message: "Image Update commit for {{.app.name}}: {{.images}}"
 
 spec:
   project: prod
